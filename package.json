@@ -1,0 +1,36 @@
+{
+  "name": "exchange-backend",
+  "version": "1.0.0",
+  "description": "Backend for cryptocurrency exchange app",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amberjohnsonsmile/exchange-backend.git"
+  },
+  "keywords": [
+    "cryptocurrency",
+    "blockchain",
+    "database"
+  ],
+  "author": "Amber Johnson",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "cors": "^2.8.4",
+    "dotenv": "^5.0.0",
+    "express": "^4.16.2",
+    "knex": "^0.14.2",
+    "pg": "^7.4.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.14.12"
+  },
+  "bugs": {
+    "url": "https://github.com/amberjohnsonsmile/exchange-backend/issues"
+  },
+  "homepage": "https://github.com/amberjohnsonsmile/exchange-backend#readme"
+}
