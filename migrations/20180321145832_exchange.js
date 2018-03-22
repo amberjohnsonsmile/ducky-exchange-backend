@@ -2,18 +2,18 @@ exports.up = function(knex, Promise) {
   return knex.schema.createTable('exchange', table => {
     table.increments().primary();
     table.timestamp('created_at').defaultTo(knex.fn.now());
-    table.float('bittrex_DASH');
-    table.float('bittrex_ETH');
-    table.float('bittrex_LTC');
-    table.float('coincap_DASH');
-    table.float('coincap_ETH');
-    table.float('coincap_LTC');
-    table.float('kraken_DASH');
-    table.float('kraken_ETH');
-    table.float('kraken_LTC');
-    table.float('poloniex_DASH');
-    table.float('poloniex_ETH');
-    table.float('poloniex_LTC');
+    table.float('DASH_bittrex');
+    table.float('DASH_coincap');
+    table.float('DASH_kraken');
+    table.float('DASH_poloniex');
+    table.float('ETH_bittrex');
+    table.float('ETH_coincap');
+    table.float('ETH_kraken');
+    table.float('ETH_poloniex');
+    table.float('LTC_bittrex');
+    table.float('LTC_coincap');
+    table.float('LTC_kraken');
+    table.float('LTC_poloniex');
   });
 };
 
