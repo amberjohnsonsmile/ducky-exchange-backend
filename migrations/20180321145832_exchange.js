@@ -1,6 +1,7 @@
 exports.up = function(knex, Promise) {
   return knex.schema.createTable('exchange', table => {
-    table.timestamp('date').primary();
+    table.increments().primary();
+    table.timestamp('created_at').defaultTo(knex.fn.now());
     table.float('bittrex_DASH');
     table.float('bittrex_ETH');
     table.float('bittrex_LTC');
