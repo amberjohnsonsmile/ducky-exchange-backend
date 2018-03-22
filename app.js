@@ -29,15 +29,16 @@ app.post('/', (request, response) => {
 
 // GET request for only latest item?
 
-// Repeat get requests every 5 minutes
-// setInterval(() => {
-//   // your code goes here...
-// }, 500);
-
 let body = {};
 let counter = 0;
 
+// Repeat get requests
+getRates();
+setInterval(getRates, 15000);
+
 function getRates() {
+  body = {};
+  counter = 0;
   bittrexDASH();
   bittrexETH();
   bittrexLTC();
@@ -47,8 +48,6 @@ function getRates() {
   kraken();
   poloniex();
 }
-
-getRates();
 
 function addRates() {
   axios
