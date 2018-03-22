@@ -4,6 +4,26 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const axios = require('axios');
 const queries = require('./queries');
+// const knex = require('./database-connection');
+
+// Need to bring knex in to insert, or could post
+
+// knex('exchange').insert([
+//   {
+//     bittrex_DASH: 0.3,
+//     bittrex_ETH: 0.3,
+//     bittrex_LTC: 0.3,
+//     coincap_DASH: 0.3,
+//     coincap_ETH: 0.3,
+//     coincap_LTC: 0.3,
+//     kraken_DASH: 0.3,
+//     kraken_ETH: 0.3,
+//     kraken_LTC: 0.3,
+//     poloniex_DASH: 0.3,
+//     poloniex_ETH: 0.3,
+//     poloniex_LTC: 0.3
+//   }
+// ]);
 
 app.use(bodyParser.json());
 app.use(cors());
@@ -11,8 +31,8 @@ app.use(cors());
 app.get('/', (request, response) => {
   queries
     .list('exchange')
-    .then(data => {
-      response.json({data});
+    .then(rates => {
+      response.json({rates});
     })
     .catch(console.error);
 });
@@ -20,8 +40,8 @@ app.get('/', (request, response) => {
 app.post('/', (request, response) => {
   queries
     .create('exchange', request.body)
-    .then(data => {
-      response.status(201).json({data});
+    .then(rates => {
+      response.status(201).json({rates});
     })
     .catch(console.error);
 });
@@ -31,7 +51,7 @@ app.post('/', (request, response) => {
 let body = {};
 
 // Bittrex DASH
-function bittrex() {
+function bittrexDASH() {
   axios
     .get('https://bittrex.com/api/v1.1/public/getmarketsummary?market=btc-dash')
     .then(response => {
@@ -40,29 +60,25 @@ function bittrex() {
     .catch(console.error);
 }
 
-// Still researching async await syntax
-async function getRates() {
-  await bittrex();
-  console.log(body)
+// Bittrex ETH
+function bittrexETH() {
+  axios
+    .get('https://bittrex.com/api/v1.1/public/getmarketsummary?market=btc-eth')
+    .then(response => {
+      body.bittrex_ETH = response.data.result[0].Last;
+    })
+    .catch(console.error);
 }
 
-getRates();
-
 // Bittrex LTC
-// axios
-//   .get('https://bittrex.com/api/v1.1/public/getmarketsummary?market=btc-ltc')
-//   .then(response => {
-//     body.bittrex_LTC = response.data.result[0].Last;
-//   })
-//   .catch(console.error);
-
-// // Bittrex ETH
-// axios
-//   .get('https://bittrex.com/api/v1.1/public/getmarketsummary?market=btc-eth')
-//   .then(response => {
-//     body.bittrex_ETH = response.data.result[0].Last;
-//   })
-//   .catch(console.error);
+function bittrexLTC() {
+  axios
+    .get('https://bittrex.com/api/v1.1/public/getmarketsummary?market=btc-ltc')
+    .then(response => {
+      body.bittrex_LTC = response.data.result[0].Last;
+    })
+    .catch(console.error);
+}
 
 // // CoinCap DASH
 // axios
@@ -111,16 +127,12 @@ getRates();
 //   })
 //   .catch(console.error);
 
-// axios.post to my server to add data?
-// Need to wait until all post requests are complete... async await? How do I do that?
-
-// async function getABC() {
-//   let A = await getValueA(); // getValueA takes 2 second to finish
-//   let B = await getValueB(); // getValueB takes 4 second to finish
-//   let C = await getValueC(); // getValueC takes 3 second to finish
-
-//   return A*B*C;
+// Still researching async await syntax
+// async function getRates() {
+//   await bittrexDASH();
+//   console.log(body);
 // }
+// getRates();
 
 app.use((request, response) => {
   response.sendStatus(404);
