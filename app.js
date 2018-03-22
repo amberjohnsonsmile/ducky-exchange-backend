@@ -4,7 +4,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const axios = require('axios');
 const queries = require('./queries');
-const postURL = 'http://localhost:3000';
+const postURL = 'https://hidden-everglades-48205.herokuapp.com/';
 
 app.use(bodyParser.json());
 app.use(cors());
@@ -147,5 +147,4 @@ app.use((request, response) => {
   response.sendStatus(404);
 });
 
-console.log('Listening on port 3000');
 app.listen(process.env.PORT || 3000);
