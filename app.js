@@ -33,7 +33,7 @@ let body = {};
 
 // Repeat get requests
 getRates();
-setInterval(getRates, 30000);
+setInterval(getRates, 300000);
 
 function getRates() {
   axios
