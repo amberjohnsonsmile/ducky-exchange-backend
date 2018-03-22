@@ -30,23 +30,24 @@ app.post('/', (request, response) => {
 // GET request for only latest item?
 
 let body = {};
-let counter = 0;
 
 // Repeat get requests
 getRates();
-setInterval(getRates, 15000);
+setInterval(getRates, 30000);
 
 function getRates() {
-  body = {};
-  counter = 0;
-  bittrexDASH();
-  bittrexETH();
-  bittrexLTC();
-  coincapDASH();
-  coincapETH();
-  coincapLTC();
-  kraken();
-  poloniex();
+  axios
+    .all([
+      bittrexDASH(),
+      bittrexETH(),
+      bittrexLTC(),
+      coincapDASH(),
+      coincapETH(),
+      coincapLTC(),
+      kraken(),
+      poloniex()
+    ])
+    .then(axios.spread(addRates));
 }
 
 function addRates() {
@@ -57,93 +58,68 @@ function addRates() {
 }
 
 // Bittrex DASH
-
 function bittrexDASH() {
-  axios
+  return axios
     .get('https://bittrex.com/api/v1.1/public/getmarketsummary?market=btc-dash')
     .then(response => {
       body.bittrex_DASH = response.data.result[0].Last;
-      counter++;
-      if (counter === 8) {
-        addRates();
-      }
     })
     .catch(console.error);
 }
 
 // Bittrex ETH
 function bittrexETH() {
-  axios
+  return axios
     .get('https://bittrex.com/api/v1.1/public/getmarketsummary?market=btc-eth')
     .then(response => {
       body.bittrex_ETH = response.data.result[0].Last;
-      counter++;
-      if (counter === 8) {
-        addRates();
-      }
     })
     .catch(console.error);
 }
 
 // Bittrex LTC
 function bittrexLTC() {
-  axios
+  return axios
     .get('https://bittrex.com/api/v1.1/public/getmarketsummary?market=btc-ltc')
     .then(response => {
       body.bittrex_LTC = response.data.result[0].Last;
-      counter++;
-      if (counter === 8) {
-        addRates();
-      }
     })
     .catch(console.error);
 }
 
 // CoinCap DASH
 function coincapDASH() {
-  axios
+  return axios
     .get('http://coincap.io/page/DASH')
     .then(response => {
       body.coincap_DASH = response.data.price_btc;
-      counter++;
-      if (counter === 8) {
-        addRates();
-      }
     })
     .catch(console.error);
 }
 
 // CoinCap ETH
 function coincapETH() {
-  axios
+  return axios
     .get('http://coincap.io/page/ETH')
     .then(response => {
       body.coincap_ETH = response.data.price_btc;
-      counter++;
-      if (counter === 8) {
-        addRates();
-      }
     })
     .catch(console.error);
 }
 
 // CoinCap LTC
 function coincapLTC() {
-  axios
+  return axios
     .get('http://coincap.io/page/LTC')
     .then(response => {
       body.coincap_LTC = response.data.price_btc;
-      counter++;
-      if (counter === 8) {
-        addRates();
-      }
     })
     .catch(console.error);
 }
 
 // Kraken API
 function kraken() {
-  axios
+  return axios
     .get(
       'https://api.kraken.com/0/public/Ticker?pair=dashxbt,xltcxxbt,xethxxbt'
     )
@@ -151,26 +127,18 @@ function kraken() {
       body.kraken_DASH = parseFloat(response.data.result.DASHXBT.p[0]);
       body.kraken_ETH = parseFloat(response.data.result.XETHXXBT.p[0]);
       body.kraken_LTC = parseFloat(response.data.result.XLTCXXBT.p[0]);
-      counter++;
-      if (counter === 8) {
-        addRates();
-      }
     })
     .catch(console.error);
 }
 
 // Poloniex API
 function poloniex() {
-  axios
+  return axios
     .get('https://poloniex.com/public?command=returnTicker')
     .then(response => {
       body.poloniex_DASH = parseFloat(response.data.BTC_DASH.last);
       body.poloniex_ETH = parseFloat(response.data.BTC_ETH.last);
       body.poloniex_LTC = parseFloat(response.data.BTC_LTC.last);
-      counter++;
-      if (counter === 8) {
-        addRates();
-      }
     })
     .catch(console.error);
 }
