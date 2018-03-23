@@ -9,5 +9,10 @@ module.exports = {
       .insert(body)
       .returning("*")
       .then(record => record[0])
+  },
+  latest(table) {
+    return database(table)
+      .orderBy('id', 'desc')
+      .first();
   }
 }

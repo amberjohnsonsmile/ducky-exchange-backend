@@ -5,22 +5,37 @@ exports.seed = function(knex, Promise) {
       return knex('exchange').insert([
         {
           id: 1,
-          bittrex_DASH: 0.0485018,
-          bittrex_ETH: 0.063,
-          bittrex_LTC: 0.01912,
-          coincap_DASH: 0.05262244592405035,
-          coincap_ETH: 0.07530249662193882,
-          coincap_LTC: 0.019196079501067484,
-          kraken_DASH: 0.04852172,
-          kraken_ETH: 0.0633,
-          kraken_LTC: 0.01908741,
-          poloniex_DASH: 0.0437779,
-          poloniex_ETH: 0.062965,
-          poloniex_LTC: 0.01907777
+          DASH_bittrex: 0.0485018,
+          ETH_bittrex: 0.063,
+          LTC_bittrex: 0.01912,
+          DASH_coincap: 0.05262244592405035,
+          ETH_coincap: 0.07530249662193882,
+          LTC_coincap: 0.019196079501067484,
+          DASH_kraken: 0.04852172,
+          ETH_kraken: 0.0633,
+          LTC_kraken: 0.01908741,
+          DASH_poloniex: 0.0437779,
+          ETH_poloniex: 0.062965,
+          LTC_poloniex: 0.01907777
+        },
+        {
+          id: 2,
+          DASH_bittrex: 0.0485018,
+          ETH_bittrex: 0.063,
+          LTC_bittrex: 0.01912,
+          DASH_coincap: 0.05262244592405035,
+          ETH_coincap: 0.07530249662193882,
+          LTC_coincap: 0.019196079501067484,
+          DASH_kraken: 0.04852172,
+          ETH_kraken: 0.0633,
+          LTC_kraken: 0.01908741,
+          DASH_poloniex: 0.0437779,
+          ETH_poloniex: 0.062965,
+          LTC_poloniex: 0.01907777
         }
       ]);
     })
     .then(() => {
-      return knex.raw('ALTER SEQUENCE exchange_id_seq RESTART WITH 2');
+      return knex.raw('ALTER SEQUENCE exchange_id_seq RESTART WITH 3');
     });
 };
