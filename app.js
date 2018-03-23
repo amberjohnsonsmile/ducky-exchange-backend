@@ -27,11 +27,8 @@ app.post('/', (request, response) => {
     .catch(console.error);
 });
 
-// GET request for only latest item?
-
 let body = {};
 
-// Repeat get requests
 getRates();
 setInterval(getRates, 300000);
 
@@ -57,7 +54,6 @@ function addRates() {
     .catch(console.error);
 }
 
-// Bittrex DASH
 function bittrexDASH() {
   return axios
     .get('https://bittrex.com/api/v1.1/public/getmarketsummary?market=btc-dash')
@@ -67,7 +63,6 @@ function bittrexDASH() {
     .catch(console.error);
 }
 
-// Bittrex ETH
 function bittrexETH() {
   return axios
     .get('https://bittrex.com/api/v1.1/public/getmarketsummary?market=btc-eth')
@@ -77,7 +72,6 @@ function bittrexETH() {
     .catch(console.error);
 }
 
-// Bittrex LTC
 function bittrexLTC() {
   return axios
     .get('https://bittrex.com/api/v1.1/public/getmarketsummary?market=btc-ltc')
@@ -87,7 +81,6 @@ function bittrexLTC() {
     .catch(console.error);
 }
 
-// CoinCap DASH
 function coincapDASH() {
   return axios
     .get('http://coincap.io/page/DASH')
@@ -97,7 +90,6 @@ function coincapDASH() {
     .catch(console.error);
 }
 
-// CoinCap ETH
 function coincapETH() {
   return axios
     .get('http://coincap.io/page/ETH')
@@ -107,7 +99,6 @@ function coincapETH() {
     .catch(console.error);
 }
 
-// CoinCap LTC
 function coincapLTC() {
   return axios
     .get('http://coincap.io/page/LTC')
@@ -117,7 +108,6 @@ function coincapLTC() {
     .catch(console.error);
 }
 
-// Kraken API
 function kraken() {
   return axios
     .get(
@@ -131,7 +121,6 @@ function kraken() {
     .catch(console.error);
 }
 
-// Poloniex API
 function poloniex() {
   return axios
     .get('https://poloniex.com/public?command=returnTicker')
