@@ -18,6 +18,15 @@ app.get('/', (request, response) => {
     .catch(console.error);
 });
 
+app.get('/latest', (request, response) => {
+  queries
+    .latest('exchange')
+    .then(rates => {
+      response.json({rates});
+    })
+    .catch(console.error);
+});
+
 app.post('/', (request, response) => {
   queries
     .create('exchange', request.body)

@@ -12,6 +12,7 @@ module.exports = {
   },
   latest(table) {
     return database(table)
-      .last();
+      .orderBy('id', 'desc')
+      .first();
   }
 }
