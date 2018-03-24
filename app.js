@@ -27,6 +27,33 @@ app.get('/latest', (request, response) => {
     .catch(console.error);
 });
 
+app.get('/latest-dash', (request, response) => {
+  queries
+    .latestDASH('exchange')
+    .then(rates => {
+      response.json({rates});
+    })
+    .catch(console.error);
+});
+
+app.get('/latest-eth', (request, response) => {
+  queries
+    .latestETH('exchange')
+    .then(rates => {
+      response.json({rates});
+    })
+    .catch(console.error);
+});
+
+app.get('/latest-ltc', (request, response) => {
+  queries
+    .latestLTC('exchange')
+    .then(rates => {
+      response.json({rates});
+    })
+    .catch(console.error);
+});
+
 app.post('/', (request, response) => {
   queries
     .create('exchange', request.body)

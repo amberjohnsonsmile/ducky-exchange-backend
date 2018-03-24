@@ -14,5 +14,23 @@ module.exports = {
     return database(table)
       .orderBy('id', 'desc')
       .first();
+  },
+  latestDASH(table) {
+    return database(table)
+      .orderBy('id', 'desc')
+      .first()
+      .select('DASH_bittrex', 'DASH_coincap', 'DASH_kraken', 'DASH_poloniex');
+  },
+  latestETH(table) {
+    return database(table)
+      .orderBy('id', 'desc')
+      .first()
+      .select('ETH_bittrex', 'ETH_coincap', 'ETH_kraken', 'ETH_poloniex');
+  },
+  latestLTC(table) {
+    return database(table)
+      .orderBy('id', 'desc')
+      .first()
+      .select('LTC_bittrex', 'LTC_coincap', 'LTC_kraken', 'LTC_poloniex');
   }
 }
