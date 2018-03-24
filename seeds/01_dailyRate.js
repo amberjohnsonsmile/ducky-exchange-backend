@@ -29,9 +29,9 @@ exports.seed = function(knex, Promise) {
           DASH_kraken: 0.04852172,
           ETH_kraken: 0.0633,
           LTC_kraken: 0.01908741,
-          DASH_poloniex: 0.0437779,
-          ETH_poloniex: 0.062965,
-          LTC_poloniex: 0.01907777
+          DASH_poloniex: 0.00437779,
+          ETH_poloniex: 0.0062965,
+          LTC_poloniex: 0.001907777
         }
       ]);
     })

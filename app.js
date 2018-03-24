@@ -31,7 +31,32 @@ app.get('/latest-dash', (request, response) => {
   queries
     .latestDASH('exchange')
     .then(rates => {
-      response.json({rates});
+      let orderedRates = [
+        rates.DASH_bittrex,
+        rates.DASH_coincap,
+        rates.DASH_kraken,
+        rates.DASH_poloniex
+      ];
+      orderedRates.sort();
+      let bestRate = orderedRates[0];
+      Object.keys(rates).forEach(key => {
+        if (rates[key] === bestRate) {
+          switch (key) {
+            case 'DASH_bittrex':
+              response.json({bestRate: bestRate, source: 'Bittrex'});
+              break;
+            case 'DASH_coincap':
+              response.json({bestRate: bestRate, source: 'CoinCap'});
+              break;
+            case 'DASH_kraken':
+              response.json({bestRate: bestRate, source: 'Kraken'});
+              break;
+            case 'DASH_poloniex':
+              response.json({bestRate: bestRate, source: 'Poloniex'});
+              break;
+          }
+        }
+      });
     })
     .catch(console.error);
 });
@@ -40,7 +65,32 @@ app.get('/latest-eth', (request, response) => {
   queries
     .latestETH('exchange')
     .then(rates => {
-      response.json({rates});
+      let orderedRates = [
+        rates.ETH_bittrex,
+        rates.ETH_coincap,
+        rates.ETH_kraken,
+        rates.ETH_poloniex
+      ];
+      orderedRates.sort();
+      let bestRate = orderedRates[0];
+      Object.keys(rates).forEach(key => {
+        if (rates[key] === bestRate) {
+          switch (key) {
+            case 'ETH_bittrex':
+              response.json({bestRate: bestRate, source: 'Bittrex'});
+              break;
+            case 'ETH_coincap':
+              response.json({bestRate: bestRate, source: 'CoinCap'});
+              break;
+            case 'ETH_kraken':
+              response.json({bestRate: bestRate, source: 'Kraken'});
+              break;
+            case 'ETH_poloniex':
+              response.json({bestRate: bestRate, source: 'Poloniex'});
+              break;
+          }
+        }
+      });
     })
     .catch(console.error);
 });
@@ -49,7 +99,32 @@ app.get('/latest-ltc', (request, response) => {
   queries
     .latestLTC('exchange')
     .then(rates => {
-      response.json({rates});
+      let orderedRates = [
+        rates.LTC_bittrex,
+        rates.LTC_coincap,
+        rates.LTC_kraken,
+        rates.LTC_poloniex
+      ];
+      orderedRates.sort();
+      let bestRate = orderedRates[0];
+      Object.keys(rates).forEach(key => {
+        if (rates[key] === bestRate) {
+          switch (key) {
+            case 'LTC_bittrex':
+              response.json({bestRate: bestRate, source: 'Bittrex'});
+              break;
+            case 'LTC_coincap':
+              response.json({bestRate: bestRate, source: 'CoinCap'});
+              break;
+            case 'LTC_kraken':
+              response.json({bestRate: bestRate, source: 'Kraken'});
+              break;
+            case 'LTC_poloniex':
+              response.json({bestRate: bestRate, source: 'Poloniex'});
+              break;
+          }
+        }
+      });
     })
     .catch(console.error);
 });

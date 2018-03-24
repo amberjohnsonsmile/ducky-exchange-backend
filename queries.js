@@ -19,7 +19,8 @@ module.exports = {
     return database(table)
       .orderBy('id', 'desc')
       .first()
-      .select('DASH_bittrex', 'DASH_coincap', 'DASH_kraken', 'DASH_poloniex');
+      .select('DASH_bittrex', 'DASH_coincap', 'DASH_kraken', 'DASH_poloniex')
+      .orderBy('DASH_bittrex' && 'DASH_coincap' && 'DASH_kraken' && 'DASH_poloniex', 'desc');
   },
   latestETH(table) {
     return database(table)
