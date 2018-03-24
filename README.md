@@ -1,4 +1,4 @@
-# Ducky Exchange
+# Ducky Exchange - Backend Code
 
 Donald wants to give each of his three kids, Huey, Luey, and Duey, birthday presents. He intends to give each of his children 5 Bitcoin each. The problem is that each of his kids has requested different coin currencies. Huey wants Ethereum. Luey is all about Litecoin. Duey is gloating about being into DASH. Donald wants to get the best rates possible when he converts the coins to give his children and wants a tool to calculate that for him. 
 
