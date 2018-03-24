@@ -39,9 +39,9 @@ If you would like to run the server locally, follow these steps:
 * GET
   * `/` - list all exchange rates over time
   * `/latest` - list only the latest rates
-  * `/latest-dash` - list the current best rate for Dash-Bitcoin and the API source
-  * `/latest-eth` - list the current best rate for Ethereum-Bitcoin and the API source
-  * `/latest-ltc` - list the current best rate for Litecoin-Bitcoin and the API source
+  * `/latest-dash` - get the current best rate for Dash-Bitcoin and the API source
+  * `/latest-eth` - get the current best rate for Ethereum-Bitcoin and the API source
+  * `/latest-ltc` - get the current best rate for Litecoin-Bitcoin and the API source
 
 ## Contact
 
