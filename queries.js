@@ -1,14 +1,14 @@
-const database = require('./database-connection')
+const database = require('./database-connection');
 
 module.exports = {
-  list(table){
+  list(table) {
     return database(table);
   },
-  create(table, body){
+  create(table, body) {
     return database(table)
       .insert(body)
-      .returning("*")
-      .then(record => record[0])
+      .returning('*')
+      .then(record => record[0]);
   },
   latest(table) {
     return database(table)
@@ -20,7 +20,10 @@ module.exports = {
       .orderBy('id', 'desc')
       .first()
       .select('DASH_bittrex', 'DASH_coincap', 'DASH_kraken', 'DASH_poloniex')
-      .orderBy('DASH_bittrex' && 'DASH_coincap' && 'DASH_kraken' && 'DASH_poloniex', 'desc');
+      .orderBy(
+        'DASH_bittrex' && 'DASH_coincap' && 'DASH_kraken' && 'DASH_poloniex',
+        'desc'
+      );
   },
   latestETH(table) {
     return database(table)
@@ -34,4 +37,4 @@ module.exports = {
       .first()
       .select('LTC_bittrex', 'LTC_coincap', 'LTC_kraken', 'LTC_poloniex');
   }
-}
+};

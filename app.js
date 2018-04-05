@@ -161,7 +161,6 @@ function getRates() {
 function addRates() {
   axios
     .post(postURL, body)
-    .then(console.log)
     .catch(console.error);
 }
 
