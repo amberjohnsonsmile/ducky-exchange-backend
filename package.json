@@ -2,7 +2,7 @@
   "name": "exchange-backend",
   "version": "1.0.0",
   "description": "Backend for cryptocurrency exchange app",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon app.js"
