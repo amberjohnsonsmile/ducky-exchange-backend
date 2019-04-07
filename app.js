@@ -141,7 +141,7 @@ app.post('/', (request, response) => {
 let body = {};
 
 getRates();
-setInterval(getRates, 300000);
+setInterval(getRates, 86400000);
 
 function getRates() {
   axios
